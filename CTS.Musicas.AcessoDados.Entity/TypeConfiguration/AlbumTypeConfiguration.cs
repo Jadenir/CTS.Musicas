@@ -30,6 +30,11 @@ namespace CTS.Musicas.AcessoDados.Entity.TypeConfiguration
                 .IsOptional()
                 .HasColumnName("ALB_OBSERVACOES")
                 .HasMaxLength(1000);
+
+            Property(p => p.Email)
+                .IsRequired()
+                .HasColumnName("ALB_EMAIL")
+                .HasMaxLength(50);
         }
 
         protected override void ConfigurarChavesEstrangeiras()
