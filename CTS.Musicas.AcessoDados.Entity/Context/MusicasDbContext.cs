@@ -13,6 +13,13 @@ namespace CTS.Musicas.AcessoDados.Entity.Context
     {
         public DbSet<Album> Albuns { get; set; }
 
+        public MusicasDbContext()
+        {
+            //Desabilida o carregamento lento, trabalhando com carregamento rápido
+            Configuration.LazyLoadingEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
+        }
+
         //Configura para usar as configurações de tabela criados ao inves do padrão do Entity
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
