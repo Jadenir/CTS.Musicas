@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -120,6 +126,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AlbunsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -162,6 +169,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Albuns\Create.cshtml" />
+    <Content Include="Views\Albuns\Delete.cshtml" />
+    <Content Include="Views\Albuns\Details.cshtml" />
+    <Content Include="Views\Albuns\Edit.cshtml" />
+    <Content Include="Views\Albuns\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -179,6 +191,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CTS.Musicas.AcessoDados.Entity\CTS.Musicas.AcessoDados.Entity.csproj">
+      <Project>{8bc694b4-e95a-4764-9945-97b92196a8ee}</Project>
+      <Name>CTS.Musicas.AcessoDados.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CTS.Musicas.Comum.Entity\CTS.Musicas.Comum.Entity.csproj">
+      <Project>{fd8f04c1-7846-4958-9a2d-9267aeae3e90}</Project>
+      <Name>CTS.Musicas.Comum.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CTS.Musicas.Dominio\CTS.Musicas.Dominio.csproj">
+      <Project>{a579b131-bf63-475d-972e-2498b7c412a6}</Project>
+      <Name>CTS.Musicas.Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
