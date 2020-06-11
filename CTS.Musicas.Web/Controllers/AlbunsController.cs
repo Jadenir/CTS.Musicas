@@ -6,8 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using CTS.Musicas.AcessoDados.Entity.Context;
 using CTS.Musicas.Dominio;
+using CTS.Musicas.Web.ViewModels.Album;
 
 namespace CTS.Musicas.Web.Controllers
 {
@@ -18,7 +20,7 @@ namespace CTS.Musicas.Web.Controllers
         // GET: Albuns
         public ActionResult Index()
         {
-            return View(db.Albuns.ToList());
+            return View(Mapper.Map<List<Album>, List<AlbumIndexViewModel>>(db.Albuns.ToList()));
         }
 
         // GET: Albuns/Details/5
