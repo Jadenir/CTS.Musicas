@@ -6,7 +6,9 @@ using System.Web;
 
 namespace CTS.Musicas.Web.ViewModels.Album
 {
-    public class AlbumIndexViewModel
+    //Esse ViewModel será usado nas telas de Index, ou seja somente para listar os dados
+    //Dispensando as DataAnottations de validação, usando somente anottations para nome
+    public class AlbumExibicaoViewModel
     {
         public int Id { get; set; }
 

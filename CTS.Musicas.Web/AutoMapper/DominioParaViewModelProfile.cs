@@ -12,7 +12,15 @@ namespace CTS.Musicas.Web.AutoMapper
     {
         protected override void Configure()
         {
-            Mapper.CreateMap<Album, AlbumIndexViewModel>();
+            Mapper.CreateMap<Album, AlbumExibicaoViewModel>()
+                .ForMember(p => p.Nome, opt =>
+                {
+                    opt.MapFrom(src =>
+                    string.Format("{0} ({1})", src.Nome, src.Ano.ToString())
+                        );
+                });
+
+            Mapper.CreateMap<Album, AlbumViewModel>();
         }
     }
 }
