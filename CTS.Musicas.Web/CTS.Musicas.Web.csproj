@@ -214,6 +214,18 @@
       <Project>{a579b131-bf63-475d-972e-2498b7c412a6}</Project>
       <Name>CTS.Musicas.Dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CTS.Musicas.Repositorios.Entity\CTS.Musicas.Repositorios.Entity.csproj">
+      <Project>{3ba306b5-63eb-48be-9141-e3bec1a35059}</Project>
+      <Name>CTS.Musicas.Repositorios.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CTS.Repositorios.Comum.Entity\CTS.Repositorios.Comum.Entity.csproj">
+      <Project>{bc0dde73-f16e-4476-9712-4e7fd4204b6a}</Project>
+      <Name>CTS.Repositorios.Comum.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CTS.Repositorios.Comum\CTS.Repositorios.Comum.csproj">
+      <Project>{b20df1ea-722b-49e2-a89e-07dec1dce583}</Project>
+      <Name>CTS.Repositorios.Comum</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
