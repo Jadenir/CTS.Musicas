@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CTS.Musicas.Web.Annotations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,16 +14,16 @@ namespace CTS.Musicas.Web.ViewModels.Album
         [Required(ErrorMessage = "O ID do album é obraigatório")]
         public int Id { get; set; }
 
-        [Display(Name = "Nome do lbum:")]
+        [Display(Name = "Nome:")]
         [Required(ErrorMessage = "O nome é obrigatório")]
         [MaxLength(100, ErrorMessage = "O nome do album poderá ter no máximo 100 caracteres")]
         public string Nome { get; set; }
                 
-        [Display(Name = "Ano do album:")]
+        [Display(Name = "Ano:")]
         [Required(ErrorMessage = "O ano é obrigatório")]
         public int Ano { get; set; }
 
-                [Display(Name = "Observações do album:")]
+                [Display(Name = "Observações:")]
         [MaxLength(1000, ErrorMessage = "Quantidade de caracteres excedida. Limte de 1000 caracteres")]
         public string Observacoes { get; set; }
 
@@ -30,6 +31,7 @@ namespace CTS.Musicas.Web.ViewModels.Album
         [DataType(DataType.EmailAddress, ErrorMessageResourceName ="Informe um e-mail válido")]
         [Required(ErrorMessage = "O e-mail é obrigatório")]
         [MaxLength(50, ErrorMessage = "Quantidade de caracteres excedida. Limte de 50 caracteres")]
+        [EmailCTSAttributes(ErrorMessage ="O e-mail tem que ser da CTS")]
         public string Email { get; set; }
     }
 }

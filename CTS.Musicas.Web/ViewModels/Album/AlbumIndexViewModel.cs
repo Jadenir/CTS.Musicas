@@ -12,16 +12,16 @@ namespace CTS.Musicas.Web.ViewModels.Album
     {
         public int Id { get; set; }
 
-        [Display(Name = "Nome do Album:")]
+        [Display(Name = "Nome:")]
         public string Nome { get; set; }
 
-        [Display(Name = "Ano do Album:")]
+        [Display(Name = "Ano:")]
         public int Ano { get; set; }
 
-        [Display(Name = "Observações do Album:")]
+        [Display(Name = "Observações:")]
         public string Observacoes { get; set; }
 
-        [Display(Name = "Email de contato:")]
+        [Display(Name = "E-mail de contato:")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
     }
