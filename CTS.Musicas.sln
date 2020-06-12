@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositorios", "Repositorio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTS.Repositorios.Comum", "CTS.Repositorios.Comum\CTS.Repositorios.Comum.csproj", "{B20DF1EA-722B-49E2-A89E-07DEC1DCE583}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTS.Repositorios.Comum.Entity", "CTS.Repositorios.Comum.Entity\CTS.Repositorios.Comum.Entity.csproj", "{BC0DDE73-F16E-4476-9712-4E7FD4204B6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{B20DF1EA-722B-49E2-A89E-07DEC1DCE583}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B20DF1EA-722B-49E2-A89E-07DEC1DCE583}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B20DF1EA-722B-49E2-A89E-07DEC1DCE583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC0DDE73-F16E-4476-9712-4E7FD4204B6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC0DDE73-F16E-4476-9712-4E7FD4204B6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC0DDE73-F16E-4476-9712-4E7FD4204B6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC0DDE73-F16E-4476-9712-4E7FD4204B6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +60,7 @@ Global
 		{8BC694B4-E95A-4764-9945-97B92196A8EE} = {50A1E20F-F4C1-4E03-AED7-4DB0B9927420}
 		{FD8F04C1-7846-4958-9A2D-9267AEAE3E90} = {50A1E20F-F4C1-4E03-AED7-4DB0B9927420}
 		{B20DF1EA-722B-49E2-A89E-07DEC1DCE583} = {17D55002-A64A-4918-A8DA-4F21E6200E74}
+		{BC0DDE73-F16E-4476-9712-4E7FD4204B6A} = {17D55002-A64A-4918-A8DA-4F21E6200E74}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {35BEFF40-BEC6-486D-827B-7BA62BD99F09}
