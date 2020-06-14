@@ -6,20 +6,24 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using AutoMapper;
 using CTS.Musicas.AcessoDados.Entity.Context;
 using CTS.Musicas.Dominio;
+using CTS.Musicas.Repositorios.Entity;
+using CTS.Musicas.Web.ViewModels.Musica;
+using CTS.Repositorios.Comum;
 
 namespace CTS.Musicas.Web.Controllers
 {
     public class MusicasController : Controller
     {
-        private MusicasDbContext db = new MusicasDbContext();
+        private IRepositorioGenerico<Musica, long> repositorioMusicas
+            = new MusicasRepositorio(new MusicasDbContext());
 
         // GET: Musicas
         public ActionResult Index()
         {
-            var musicas = db.Musicas.Include(m => m.Album);
-            return View(musicas.ToList());
+            return View(Mapper.Map<List<Musica>, List<MusicaExibicaoViewModel>>(repositorioMusicas.Selecionar()));
         }
 
         // GET: Musicas/Details/5
@@ -29,12 +33,12 @@ namespace CTS.Musicas.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Musica musica = db.Musicas.Find(id);
+            Musica musica = repositorioMusicas.SelecionarPorId(id.Value);
             if (musica == null)
             {
                 return HttpNotFound();
             }
-            return View(musica);
+            return View(Mapper.Map<Musica, MusicaExibicaoViewModel>(musica));
         }
 
         // GET: Musicas/Create
@@ -102,12 +106,12 @@ namespace CTS.Musicas.Web.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Musica musica = db.Musicas.Find(id);
+            Musica musica = repositorioMusicas.SelecionarPorId(id.Value);
             if (musica == null)
             {
                 return HttpNotFound();
             }
-            return View(musica);
+            return View(Mapper.Map<Musica, MusicaExibicaoViewModel>(musica));
         }
 
         // POST: Musicas/Delete/5
@@ -119,15 +123,6 @@ namespace CTS.Musicas.Web.Controllers
             db.Musicas.Remove(musica);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }
