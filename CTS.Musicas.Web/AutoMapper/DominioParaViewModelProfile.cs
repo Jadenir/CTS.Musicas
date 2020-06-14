@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CTS.Musicas.Dominio;
 using CTS.Musicas.Web.ViewModels.Album;
+using CTS.Musicas.Web.ViewModels.Musica;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,14 @@ namespace CTS.Musicas.Web.AutoMapper
                 });
 
             Mapper.CreateMap<Album, AlbumViewModel>();
+            Mapper.CreateMap<Musica, MusicaExibicaoViewModel>()
+                .ForMember(p => p.NomeAlbum, opt =>
+                {
+                    opt.MapFrom(src =>
+                        src.Album.Nome
+                    );
+                });
+            Mapper.CreateMap<Musica, MusicaViewModel>();
         }
     }
 }
