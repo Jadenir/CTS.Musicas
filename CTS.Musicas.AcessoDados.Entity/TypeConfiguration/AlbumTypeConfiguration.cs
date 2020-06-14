@@ -44,7 +44,10 @@ namespace CTS.Musicas.AcessoDados.Entity.TypeConfiguration
 
         protected override void ConfigurarChavesPrimarias()
         {
-
+            //Define a chave estrangeira, está comentado pois foi definica na MusicaTypeConfiguration
+            //HasMany(p => p.Musicas)
+            //    .WithRequired(p => p.Album)
+            //    .HasForeignKey(fk => fk.IdAlbum);
         }
 
         protected override void ConfigurarNomeTabela()
