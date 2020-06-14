@@ -10,27 +10,27 @@ using System.Data.Entity;
 
 namespace CTS.Musicas.Repositorios.Entity
 {
-    public class AlbunsRepositorio : RepositorioGenericoEntity<Album, int>
+    public class MusicasRepositorio : RepositorioGenericoEntity<Musica, long>
     {
-        public AlbunsRepositorio(MusicasDbContext contexto)
+        public MusicasRepositorio(MusicasDbContext contexto)
             : base(contexto)
         {
 
         }
 
-        public override List<Album> Selecionar()
+        public override List<Musica> Selecionar()
         {
             //Sobrescreve o metodo da classe mãe
-            return _contexto.Set<Album>()
-                .Include(p => p.Musicas).ToList();
+            return _contexto.Set<Musica>()
+                .Include(p => p.Album).ToList();
         }
 
-        public override Album SelecionarPorId(int id)
+        public override Musica SelecionarPorId(long id)
         {
             //Sobrescreve o metodo da classe mãe
-            return _contexto.Set<Album>()
-                .Include(p => p.Musicas)
-                .SingleOrDefault(a => a.Id == id);
+            return _contexto.Set<Musica>()
+                .Include(p => p.Album)
+                .SingleOrDefault(m => m.Id == id);
         }
     }
 }
