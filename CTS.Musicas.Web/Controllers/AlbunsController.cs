@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using AutoMapper;
@@ -12,13 +13,20 @@ namespace CTS.Musicas.Web.Controllers
 {
     public class AlbunsController : Controller
     {
-        private IRepositorioGenerico<Album, int> repositorioAlbuns 
+        private IRepositorioGenerico<Album, int> repositorioAlbuns
             = new AlbunsRepositorio(new MusicasDbContext());
 
         // GET: Albuns
         public ActionResult Index()
         {
             return View(Mapper.Map<List<Album>, List<AlbumExibicaoViewModel>>(repositorioAlbuns.Selecionar()));
+        }
+
+        public ActionResult FiltrarPorNorme(string pesquisa)
+        {
+            List<Album> albuns = repositorioAlbuns.Selecionar().Where(a => a.Nome.Contains(pesquisa)).ToList();
+            List<AlbumExibicaoViewModel> viewModels = Mapper.Map<List<Album>, List<AlbumExibicaoViewModel>>(albuns);
+            return Json(viewModels, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Albuns/Details/5
