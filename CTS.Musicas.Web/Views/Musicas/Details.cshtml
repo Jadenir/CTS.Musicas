@@ -11,14 +11,6 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Album.Nome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Album.Nome)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
 
@@ -26,9 +18,16 @@
             @Html.DisplayFor(model => model.Nome)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.NomeAlbum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeAlbum)
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para lista", "Index")
 </p>
