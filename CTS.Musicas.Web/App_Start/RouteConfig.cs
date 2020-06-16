@@ -13,6 +13,13 @@ namespace CTS.Musicas.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //Rota personalizada para pesquisa de album por nome
+            routes.MapRoute(
+                name: "PesquisaAlbuns",
+                url: "Albuns/PesquisaPorNome/{pesquisa}",
+                defaults: new { Controller = "Albuns", action = "FiltrarPorNome", pesquisa = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

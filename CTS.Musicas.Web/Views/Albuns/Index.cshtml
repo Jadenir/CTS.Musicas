@@ -14,7 +14,7 @@
         <input type="text" id="pesquisaAlbum" class="form-control" />
     </div>
     <div class="col-sm-2 col-md-2 col-lg-2">
-        <button id="btnPesquisarAlbum">Pesquisar</button>
+        <button id="btnPesquisarAlbum" class="btn btn-primary">Pesquisar</button>
     </div>
 </div>
 <table class="table" id="tblAlbuns">
@@ -67,7 +67,7 @@
                 var termoPesquisa = $("#pesquisaAlbum").val();
                 $.ajax({
                     method: "GET",
-                    url: "/Albuns/FiltrarPorNome?pesquisa=" + termoPesquisa,
+                    url: "/Albuns/PesquisaPorNome/" + termoPesquisa,
                     success: function (data) {
                         //Limpa a tabela
                         $("#tblAlbuns tbody > tr").remove();
