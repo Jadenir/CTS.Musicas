@@ -22,7 +22,8 @@ namespace CTS.Musicas.Web.Controllers
             return View(Mapper.Map<List<Album>, List<AlbumExibicaoViewModel>>(repositorioAlbuns.Selecionar()));
         }
 
-        public ActionResult FiltrarPorNorme(string pesquisa)
+        //Consulta albuns pelo nome retornando Json, e usando Ajax na View
+        public ActionResult FiltrarPorNome(string pesquisa)
         {
             List<Album> albuns = repositorioAlbuns.Selecionar().Where(a => a.Nome.Contains(pesquisa)).ToList();
             List<AlbumExibicaoViewModel> viewModels = Mapper.Map<List<Album>, List<AlbumExibicaoViewModel>>(albuns);

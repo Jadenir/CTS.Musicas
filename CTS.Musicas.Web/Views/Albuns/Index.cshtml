@@ -9,43 +9,90 @@
 <p>
     @Html.ActionLink("Novo Album", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ano)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Observacoes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div class="row">
+    <div class="col-sm-10 col-md-10 col-lg-10">
+        <input type="text" id="pesquisaAlbum" class="form-control" />
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+        <button id="btnPesquisarAlbum">Pesquisar</button>
+    </div>
+</div>
+<table class="table" id="tblAlbuns">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ano)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observacoes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ano)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observacoes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Observacoes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Deletar", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnPesquisarAlbum").click(function () {
+                var termoPesquisa = $("#pesquisaAlbum").val();
+                $.ajax({
+                    method: "GET",
+                    url: "/Albuns/FiltrarPorNome?pesquisa=" + termoPesquisa,
+                    success: function (data) {
+                        //Limpa a tabela
+                        $("#tblAlbuns tbody > tr").remove();
+                        //executa um for each no retorno data
+                        $.each(data, function (i, album) {
+                            $("#tblAlbuns tbody").append(
+                                "<tr>" +
+                                "   <td>" + album.Nome + "</td>" +
+                                "   <td>" + album.Ano + "</td>" +
+                                "   <td>" + album.Observacoes + "</td>" +
+                                "   <td>" + album.Email + "</td>" +
+                                "   <td>" +
+                                "       <a href='/Albuns/Edit/" + album.Id + "'>Editar</a>" + " | " +
+                                "       <a href='/Albuns/Details/" + album.Id + "'>Detalhes</a>" + " | " +
+                                "       <a href='/Albuns/Delete/" + album.Id + "'>Deletar</a>" +
+                                "   </td>" +
+                                "</tr>"
+                            );
+                        });
+                    },
+                    Error: function (data) {
+                        alert("Houve um erro na pesquisa.")
+                    },
+                });
+            });
+        });
+    </script>
+}
