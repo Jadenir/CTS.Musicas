@@ -136,6 +136,8 @@
     <Compile Include="Controllers\AlbunsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MusicasController.cs" />
+    <Compile Include="Filtros\LogActionFilter.cs" />
+    <Compile Include="Filtros\LogResultFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

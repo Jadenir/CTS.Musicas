@@ -6,17 +6,19 @@ using AutoMapper;
 using CTS.Musicas.AcessoDados.Entity.Context;
 using CTS.Musicas.Dominio;
 using CTS.Musicas.Repositorios.Entity;
+using CTS.Musicas.Web.Filtros;
 using CTS.Musicas.Web.ViewModels.Album;
 using CTS.Repositorios.Comum;
 
 namespace CTS.Musicas.Web.Controllers
-{
+{        
     public class AlbunsController : Controller
     {
         private IRepositorioGenerico<Album, int> repositorioAlbuns
             = new AlbunsRepositorio(new MusicasDbContext());
 
         // GET: Albuns
+
         public ActionResult Index()
         {
             return View(Mapper.Map<List<Album>, List<AlbumExibicaoViewModel>>(repositorioAlbuns.Selecionar()));
