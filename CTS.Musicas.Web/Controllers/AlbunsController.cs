@@ -11,14 +11,14 @@ using CTS.Musicas.Web.ViewModels.Album;
 using CTS.Repositorios.Comum;
 
 namespace CTS.Musicas.Web.Controllers
-{        
+{
+    [Authorize]
     public class AlbunsController : Controller
     {
         private IRepositorioGenerico<Album, int> repositorioAlbuns
             = new AlbunsRepositorio(new MusicasDbContext());
 
         // GET: Albuns
-
         public ActionResult Index()
         {
             return View(Mapper.Map<List<Album>, List<AlbumExibicaoViewModel>>(repositorioAlbuns.Selecionar()));
@@ -48,6 +48,7 @@ namespace CTS.Musicas.Web.Controllers
         }
 
         // GET: Albuns/Create
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             return View();
@@ -58,6 +59,7 @@ namespace CTS.Musicas.Web.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create([Bind(Include = "Id,Nome,Ano,Observacoes,Email")] AlbumViewModel viewModel)
         {
             if (ModelState.IsValid)

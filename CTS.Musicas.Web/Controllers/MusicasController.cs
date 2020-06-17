@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace CTS.Musicas.Web.Controllers
 {
+    [Authorize]
     public class MusicasController : Controller
     {
         private IRepositorioGenerico<Musica, long> repositorioMusicas

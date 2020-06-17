@@ -1,18 +1,14 @@
-﻿using CTS.Musicas.AcessoDados.Entity.Context;
-using CTS.Musicas.Web.Identity;
+﻿using CTS.Musicas.Web.Identity;
 using CTS.Musicas.Web.ViewModels.Usuario;
-using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 
 namespace CTS.Musicas.Web.Controllers
 {
+    [AllowAnonymous]
     public class UsuariosController : Controller
     {
         public ActionResult CriarUsuario()
@@ -77,6 +73,7 @@ namespace CTS.Musicas.Web.Controllers
             return View(viewModel);
         }
 
+        [Authorize]
         public ActionResult Logoff()
         {
             var authManager = HttpContext.GetOwinContext().Authentication;
