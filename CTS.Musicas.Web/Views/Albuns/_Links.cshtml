@@ -1,0 +1,9 @@
+﻿@model CTS.Musicas.Web.ViewModels.Album.AlbumExibicaoViewModel
+
+
+@Html.ActionLink("Detalhes", "Details", new { id = Model.Id })
+@if (User.IsInRole("Administrador"))
+{
+    <a href="@Url.Action("Edit", "Albuns")"> | Editar |</a>
+    <a href="@Url.Action("Delete", "Albuns")">Deletar</a>
+}

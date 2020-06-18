@@ -226,6 +226,8 @@
     <Content Include="Views\Musicas\Index.cshtml" />
     <Content Include="Views\Usuarios\CriarUsuario.cshtml" />
     <Content Include="Views\Usuarios\Login.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Albuns\_Links.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
